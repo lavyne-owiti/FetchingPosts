@@ -42,7 +42,7 @@ class CommentActivity : AppCompatActivity() {
     }
     fun getComments() {
         val apiclient = ApiClient.buildAPiClient(ApiIterface::class.java)
-        val request = apiclient.getComments()
+        val request = apiclient.getComments(postId)
         request.enqueue(object :Callback<List<Comment>>{
             override fun onResponse(call: Call<List<Comment>>, response: Response<List<Comment>>) {
                 if (response.isSuccessful){

@@ -16,10 +16,10 @@ class CommentRVAdapter(var commentlist:List<Comment>):RecyclerView.Adapter<Comme
         var commentlist=commentlist.get(position)
         with(holder.binding){
             tvPostIdbody.text=commentlist.postId.toString()
-            tvIdComment.text=commentlist.id.toString()
+            tvIdBody.text=commentlist.id.toString()
             tvNamebody.text=commentlist.name
             tvEmailBody.text=commentlist.email
-            tvBodyComment.text=commentlist.body
+            tvBodycomments.text=commentlist.body
         }
 
     }
