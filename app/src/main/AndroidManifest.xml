@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PostApplication">
         <activity
+            android:name=".CommentActivity"
+            android:exported="false" />
+        <activity
             android:name=".Post_RV_Adapter_Activity"
             android:exported="false" />
         <activity

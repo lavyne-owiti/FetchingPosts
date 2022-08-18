@@ -1,15 +1,16 @@
 package dev.lavyne.postapplication
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.lavyne.postapplication.databinding.PostlistBinding
-
-class PostsRVAdapter (var context:Context, var postlist:List<Post>):RecyclerView.Adapter<PostViewHolder>(){
+//var context:Context
+class PostsRVAdapter ( var postlist:List<Post>):RecyclerView.Adapter<PostViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
       var binding=PostlistBinding
-          .inflate(LayoutInflater.from(context),parent,false)
+          .inflate(LayoutInflater.from(parent.context),parent,false)
         return PostViewHolder(binding)
     }
 
@@ -20,8 +21,13 @@ class PostsRVAdapter (var context:Context, var postlist:List<Post>):RecyclerView
             tvIds.text=currentPosts.id.toString()
             tvTitles.text=currentPosts.title
             tvBodies.text=currentPosts.body
+            val context = holder.itemView.context
+            cvPost.setOnClickListener {
+                val intent=Intent(context,CommentActivity::class.java)
+                intent.putExtra("POST_ID",currentPosts.id)
+                context.startActivity(intent)
+            }
         }
-
     }
 
     override fun getItemCount(): Int {
